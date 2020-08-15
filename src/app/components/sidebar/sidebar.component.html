@@ -1,0 +1,17 @@
+<div class="sidebar">
+    <a href="">RM</a>
+    <nav>
+        <a routerLink="/movies" routerLinkActive="active">
+            <img src="assets/icons/eye.svg" alt="sidebar nav link icon"> <br> Peliculas
+        </a>
+        <a routerLink="/series" routerLinkActive="active">
+            <img src="assets/icons/monitor.svg" alt="sidebar nav link icon"> <br> Series
+        </a>
+        <a routerLink="/addmovie" routerLinkActive="active">
+            <img src="assets/icons/folder.svg" alt="sidebar nav link icon"> <br> Agregar
+        </a>
+        <a [routerLink]="['/addseries', 'ford', 'focus']" routerLinkActive="active">
+            <img src="assets/icons/heart.svg" alt="sidebar nav link icon">
+        </a>
+    </nav>
+</div>
