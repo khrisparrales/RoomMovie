@@ -6,7 +6,7 @@ import { SeriesComponent } from './components/series/series.component';
 import { AddmovieComponent } from "./components/addmovie/addmovie.component";
 import { AddseriesComponent } from "./components/addseries/addseries.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'aboutangular', component: AboutangularComponent },
   { path: 'movies', component: MoviesComponent },
   { path: 'series', component: SeriesComponent },

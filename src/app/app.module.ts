@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule,routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutangularComponent } from './components/aboutangular/aboutangular.component';
 import { MoviesComponent } from './components/movies/movies.component';
@@ -20,7 +21,12 @@ import { AddseriesComponent } from './components/addseries/addseries.component';
     AddmovieComponent,
     AddseriesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes, { useHash: true }),
+
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
