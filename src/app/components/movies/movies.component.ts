@@ -1,20 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
+import { filter } from 'rxjs/operators';
 import { MoviesService } from "../../services/movies.service";
-
+import { MoviesRootObject } from "../../interfaces/movies.model";
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  styleUrls: ['./movies.component.scss'],
 })
 export class MoviesComponent implements OnInit {
+  constructor(private moviesservice: MoviesService) {}
+  movies: MoviesRootObject[] = null;
 
-  constructor(private moviesservice:MoviesService) { }
-
+  searchText: any = '';
+  sortBy: any = 'id';
   ngOnInit() {
-    this.moviesservice.getmovies().subscribe(resp=>{
-      console.log('movies ',resp);
-      alert(resp);
+   // this.movies = this.moviesservice.getmovies();
+    this.moviesservice.getmovies().subscribe((movies) => {
+      this.movies = movies;
+   //   this.applyFilter(this.selectedGenre);
     });
+    // this.moviesservice.getmovies()
+    //.subscribe((resp:MoviesRootObject[])=>{
+    //   console.log('movies ',resp);
+    //  // alert(resp);
+    //  this.movies=resp;
+    // });
   }
-
 }

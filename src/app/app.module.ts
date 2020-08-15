@@ -11,6 +11,9 @@ import { SeriesComponent } from './components/series/series.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddmovieComponent } from './components/addmovie/addmovie.component';
 import { AddseriesComponent } from './components/addseries/addseries.component';
+import { NopageComponent } from './components/nopage/nopage.component';
+import { MoviedetailComponent } from './components/moviedetail/moviedetail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +23,8 @@ import { AddseriesComponent } from './components/addseries/addseries.component';
     SeriesComponent,
     AddmovieComponent,
     AddseriesComponent,
+    NopageComponent,
+    MoviedetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +32,7 @@ import { AddseriesComponent } from './components/addseries/addseries.component';
 
     HttpClientModule,
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent],
 })

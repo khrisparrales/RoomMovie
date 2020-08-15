@@ -1,0 +1,31 @@
+<!-- <app-loading-spinner [loading]="!movie"></app-loading-spinner> -->
+
+<div class="movie-info-container" *ngIf="movie">
+    <div class="movie-banner-cover">
+        <img src="{{movie.cover}}" alt="movie cover">
+    </div>
+    <div class="movie-detail-container">
+        <div class="movie-detail">
+            <h2>{{movie.name}}</h2>
+            <div class="short-info">
+                <div class="rate"><span>Puntuacion: <strong>{{movie.rate}}</strong></span></div>
+                <!-- <div class="duration"><span>Duracion: <strong>{{movie.length}}</strong></span></div> -->
+                <div class="genres">
+                    <span>Generos:</span>
+                    <!-- <a *ngFor="let genre of movie.genres" [routerLink]="['/movies/']" [queryParams]="{filter:genre}">
+                        {{genre}}
+                    </a> -->
+                </div>
+            </div>
+            <p class="desc">
+                {{movie.description}}
+            </p>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" allowfullscreen [src]="urlSafe"></iframe>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
