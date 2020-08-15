@@ -7,12 +7,13 @@ import { AddmovieComponent } from "./components/addmovie/addmovie.component";
 import { AddseriesComponent } from "./components/addseries/addseries.component";
 
 export const routes: Routes = [
-  { path: 'aboutangular', component: AboutangularComponent },
-  { path: 'movies', component: MoviesComponent },
-  { path: 'series', component: SeriesComponent },
-  { path: 'addmovie', component: AddmovieComponent },
-  { path: 'addseries/:id/:name', component: AddseriesComponent },
-];
+         { path: 'aboutangular', component: AboutangularComponent },
+         { path: 'movies', component: MoviesComponent },
+         { path: 'series', component: SeriesComponent },
+         { path: 'addmovie', component: AddmovieComponent },
+         { path: 'addseries/:id/:name', component: AddseriesComponent },
+         { path: '', component: MoviesComponent },
+       ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
