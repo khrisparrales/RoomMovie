@@ -13,6 +13,13 @@ import { AddmovieComponent } from './components/addmovie/addmovie.component';
 import { AddseriesComponent } from './components/addseries/addseries.component';
 import { NopageComponent } from './components/nopage/nopage.component';
 import { MoviedetailComponent } from './components/moviedetail/moviedetail.component';
+import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LogindbComponent } from './components/logindb/logindb.component';
+// import { MatButtonModule } from '@angular/material/button';
+// import { MatSliderModule } from '@angular/material/slider';
+import {  MATERIAL } from './app.common';
+
 
 @NgModule({
   declarations: [
@@ -25,12 +32,17 @@ import { MoviedetailComponent } from './components/moviedetail/moviedetail.compo
     AddseriesComponent,
     NopageComponent,
     MoviedetailComponent,
+    EnumToArrayPipe,
+    LogindbComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { useHash: true }),
 
     HttpClientModule,
+
+    BrowserAnimationsModule,
+    ...MATERIAL,
   ],
   exports: [],
   providers: [],

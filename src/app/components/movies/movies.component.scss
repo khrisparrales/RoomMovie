@@ -93,7 +93,7 @@
     flex-direction: column;
     width: calc(100% - 200px);
     max-height: 100vh;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     .movies-list-header {
         display: flex;
         justify-content: space-between;
@@ -125,14 +125,16 @@
     }
     .movies-list {
         display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 1em;
+        //justify-content: flex-start;
+        //flex-direction: row;
+        // flex-wrap: wrap;
+        // padding: 0em;
     }
     .movie {
         margin-bottom: 1.8em;
         flex-basis: 20%;
+        margin-left: 2em;
+        margin-right: 0em;
         a {
             color: $primary-title;
         }

@@ -1,3 +1,10 @@
+<!-- <h4>Resource URL:</h4>
+<p>Showing: {{dangerousVideoUrl}}</p>
+<p>Trusted:</p>
+<iframe class="e2e-iframe-trusted-src" width="640" height="390" [src]="videoUrl"></iframe>
+<p>Untrusted:</p>
+<iframe class="e2e-iframe-untrusted-src" width="640" height="390" [src]="dangerousVideoUrl"></iframe>
+<div [innerHTML]="htmlStr"></div> -->
 <!-- <app-loading-spinner [loading]="!movie"></app-loading-spinner> -->
 
 <div class="movie-info-container" *ngIf="movie">
@@ -15,13 +22,16 @@
                     <!-- <a *ngFor="let genre of movie.genres" [routerLink]="['/movies/']" [queryParams]="{filter:genre}">
                         {{genre}}
                     </a> -->
+                    <a *ngFor="let genre of movie.genre">
+                                            {{genre}}
+                                        </a>
                 </div>
             </div>
-            <p class="desc">
+            <p class="desc ">
                 {{movie.description}}
             </p>
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" allowfullscreen [src]="urlSafe"></iframe>
+            <div class="embed-responsive embed-responsive-16by9 ">
+                <iframe class="embed-responsive-item " allowfullscreen [src]="urlSafe "></iframe>
             </div>
         </div>
 
