@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule,routes } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,10 +20,16 @@ import { LogindbComponent } from './components/logindb/logindb.component';
 // import { MatButtonModule } from '@angular/material/button';
 // import { MatSliderModule } from '@angular/material/slider';
 import {  MATERIAL } from './app.common';
-
+import { UrldecodePipe } from './pipes/urldecode.pipe';
+// import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
+// import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
+// import { FormDialogComponent } from './components/dialogs/form-dialog/form-dialog.component';
 
 @NgModule({
   declarations: [
+   // ConfirmDialogComponent,
+   // AlertDialogComponent,
+  //  FormDialogComponent,
     AppComponent,
     AboutangularComponent,
     MoviesComponent,
@@ -34,12 +41,14 @@ import {  MATERIAL } from './app.common';
     MoviedetailComponent,
     EnumToArrayPipe,
     LogindbComponent,
+    UrldecodePipe,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { useHash: true }),
 
     HttpClientModule,
+    FormsModule,
 
     BrowserAnimationsModule,
     ...MATERIAL,
