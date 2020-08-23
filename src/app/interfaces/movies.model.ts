@@ -5,6 +5,7 @@ export interface MoviesRootObject {
   idtmdb?: number;
   key?: string;
   movieName?: string;
+  name?:string;
   description?: string;
   Coll: Coll;
   genre?: Array<string>;

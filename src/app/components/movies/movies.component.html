@@ -54,7 +54,8 @@
                     <figure>
                         <img src="{{movie.img}}" alt="movie poster">
                     </figure>
-                    <span class="title">{{movie.name}}</span>
+                    <span *ngIf="movie.movieName" class="title"> {{movie.movieName}}</span>
+                    <span *ngIf="movie.movieName==null" class="title"> {{movie.name}}</span>
                     <span class="rate">{{movie.rate}}</span>
                 </a>
             </div>

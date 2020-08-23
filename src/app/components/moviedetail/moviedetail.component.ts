@@ -1,5 +1,5 @@
 import { Component, OnInit,Input  } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from "../../services/movies.service";
 import { MoviesRootObject } from "../../interfaces/movies.model";
 import {DomSanitizer,SafeResourceUrl} from '@angular/platform-browser';
@@ -23,6 +23,7 @@ export class MoviedetailComponent implements OnInit {
   htmlStr: string =
     '<iframe src="https://drive.google.com/file/d/1qGSfurRqOlkruxoTB0ov71dyI0u6HjQf/preview" width="640" height="480"></iframe>';
   constructor(
+    private router: Router,
     public sanitizer: DomSanitizer,
     private activatedRoute: ActivatedRoute,
     private movieservice: MoviesService
@@ -32,8 +33,8 @@ export class MoviedetailComponent implements OnInit {
 
   ngOnInit() {
     const { id } = this.activatedRoute.snapshot.params;
-      const { key } = this.activatedRoute.snapshot.params;
-   //  alert(key)
+    const { key } = this.activatedRoute.snapshot.params;
+    //  alert(key)
     this.getMovie(id);
 
     // this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -51,6 +52,14 @@ export class MoviedetailComponent implements OnInit {
       this.dangerousVideoUrl
     );
   }
+  delete() {
+    alert('borrar'+this.movie._id);
+    
+    this.movieservice.deletemovie(this.movie._id).subscribe((data)=>{
+console.log(data);
+ this.router.navigate(['/movies']);
+    });
+  }
   getLink() {
     return 'https://drive.google.com/file/d/1qGSfurRqOlkruxoTB0ov71dyI0u6HjQf/preview';
     // return this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeVideoLink);
@@ -59,6 +68,8 @@ export class MoviedetailComponent implements OnInit {
     this.movieservice.getmovieid(id).subscribe(
       (data) => {
         this.movie = data;
+        this.movie.movieName=data.movieName;
+        console.log(this.movie)
         this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(
           this.movie.url
         );

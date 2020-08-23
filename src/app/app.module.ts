@@ -9,7 +9,7 @@ import { AboutangularComponent } from './components/aboutangular/aboutangular.co
 import { MoviesComponent } from './components/movies/movies.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SeriesComponent } from './components/series/series.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddmovieComponent } from './components/addmovie/addmovie.component';
 import { AddseriesComponent } from './components/addseries/addseries.component';
 import { NopageComponent } from './components/nopage/nopage.component';
@@ -21,15 +21,18 @@ import { LogindbComponent } from './components/logindb/logindb.component';
 // import { MatSliderModule } from '@angular/material/slider';
 import {  MATERIAL } from './app.common';
 import { UrldecodePipe } from './pipes/urldecode.pipe';
+import { DeletemovieComponent } from './components/deletemovie/deletemovie.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthGuard } from './guards/auth.guard';
 // import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
 // import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
 // import { FormDialogComponent } from './components/dialogs/form-dialog/form-dialog.component';
 
 @NgModule({
   declarations: [
-   // ConfirmDialogComponent,
-   // AlertDialogComponent,
-  //  FormDialogComponent,
+    // ConfirmDialogComponent,
+    // AlertDialogComponent,
+    //  FormDialogComponent,
     AppComponent,
     AboutangularComponent,
     MoviesComponent,
@@ -42,10 +45,12 @@ import { UrldecodePipe } from './pipes/urldecode.pipe';
     EnumToArrayPipe,
     LogindbComponent,
     UrldecodePipe,
+    DeletemovieComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+   AppRoutingModule,
+    // RouterModule.forRoot(routes),
 
     HttpClientModule,
     FormsModule,
@@ -54,7 +59,14 @@ import { UrldecodePipe } from './pipes/urldecode.pipe';
     ...MATERIAL,
   ],
   exports: [],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

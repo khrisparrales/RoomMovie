@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Cinema, Movie, MovieSearchResult,Result } from '../../interfaces/interfaces';
 import { MoviesService } from "../../services/movies.service";
 import { ApiService } from "../../services/api.service";
 import { CommonService } from '../../services/common.service';
 import { MoviesRootObject,Coll } from "../../interfaces/movies.model" ;
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 //import { DialogService } from '../../services/dialog.service';
 import {
   MAT_MOMENT_DATE_FORMATS,
@@ -15,6 +16,10 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
+export interface DialogData {
+  animal: 'panda' | 'unicorn' | 'lion';
+}
+
 @Component({
   selector: 'app-addmovie',
   templateUrl: './addmovie.component.html',
@@ -75,13 +80,16 @@ export class AddmovieComponent implements OnInit {
   url: string = this.movie.url;
   urlSafe: SafeResourceUrl;
   constructor(
-   // private dialog: DialogService,
+    // private dialog: DialogService,
     public sanitizer: DomSanitizer,
     private ms: MoviesService,
     private as: ApiService,
-    private cs: CommonService
+    private cs: CommonService,
+    public dialog: MatDialog
   ) {}
-
+  openDialog() {
+   
+  }
   ngOnInit(): void {
     //  this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.url);
     this.urlSafe = this.safeurl(this.url);
@@ -111,6 +119,7 @@ export class AddmovieComponent implements OnInit {
       this.searchMovie();
     }, 500);
   }
+  cncelload() {}
   searchMovie() {
     if (this.movie.movieName.length < 3) {
       return;
@@ -179,7 +188,7 @@ export class AddmovieComponent implements OnInit {
       //     //this.ge
       //     // this.movie.genre.push(value.name);
       //   });
-
+if(data.overview==''){this.movie.description="null";}
       console.log(data);
       console.log(Number(res));
       console.log(data.title);
@@ -230,7 +239,7 @@ export class AddmovieComponent implements OnInit {
     alert('URL:' + this.movie.url);
   }
   saveMovie() {
-    alert("wwww");
+    alert('wwww');
     // if (this.movie.movieName == '') {
     //   this.dialog.alert({
     //     title: 'Error',
@@ -244,9 +253,17 @@ export class AddmovieComponent implements OnInit {
     console.log(this.movie);
     this.as.addmovie(this.movie).subscribe((data) => {
       console.log(data);
+       this.dialog.open(DialogDataExampleDialog);
     });
   }
   uploadCover() {
     document.getElementById('cover').click();
   }
+}
+@Component({
+  selector: 'dialog-data-example-dialog',
+  templateUrl: 'dialog-data-example-dialog.html',
+})
+export class DialogDataExampleDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public movie: MoviesRootObject) {}
 }

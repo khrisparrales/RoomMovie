@@ -28,6 +28,13 @@ export class MoviesService {
       catchError(this.handleError<MoviesRootObject>(`getMovie id=${id}`))
     );
   }
+    deletemovie(id:string){
+    return this.http.delete(
+      'https://apiroommovie.herokuapp.com/api/movies/' +
+      id
+    );
+
+  }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(`${operation} failed: ${error.message}`);

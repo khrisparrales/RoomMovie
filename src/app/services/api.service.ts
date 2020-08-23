@@ -61,26 +61,24 @@ export class ApiService {
         id: pelicula.id,
         idimdb: pelicula.idimdb,
         idtmdb: pelicula.idtmdb,
-        key: pelicula.key,
+      //  key: 'Batman%20inicia',
+      key:"Batman%3A%20El%20caballero%20de%20la%20noche%20asciende",
         movieName: pelicula.movieName,
-        description:
-          pelicula.description,
+        description: pelicula.description,
         idColl: pelicula.Coll.idColl,
-        Collname: pelicula.Coll.Collname,
+        CollName: pelicula.Coll.Collname,
         imgColl: pelicula.Coll.imgColl,
         coverColl: pelicula.Coll.coverColl,
         exist: pelicula.Coll.exist,
         genre: pelicula.genre,
         rate: pelicula.rate,
-        img:
-          pelicula.img,
-        cover:
-          pelicula.cover,
-        url:
-          pelicula.url,
+        img: pelicula.img,
+        cover: pelicula.cover,
+        url: pelicula.url,
       }
     );
   }
+
   // selectResult(id: number): Observable<MovieSearchDetailResult> {
   //   return this.http.post<MovieSearchDetailResult>(
   //     this.apiUrl + 'select-result',
