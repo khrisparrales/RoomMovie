@@ -12,7 +12,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
          { path: 'deletemovie', component: DeletemovieComponent },
-         { path: 'aboutangular', component: AboutangularComponent },
+         //  { path: 'aboutangular', component: AboutangularComponent },
          { path: 'movies', component: MoviesComponent },
          { path: 'series', component: SeriesComponent },
          {
@@ -21,7 +21,7 @@ export const routes: Routes = [
            canActivate: [AuthGuard],
          },
          { path: 'login', component: LogindbComponent },
-         { path: 'addseries/:id/:name', component: AddseriesComponent },
+         //  { path: 'addseries/:id/:name', component: AddseriesComponent },
          { path: '', redirectTo: '/movies', pathMatch: 'full' },
          {
            path: 'moviesdetail/:id/:key',
@@ -35,7 +35,7 @@ export const routes: Routes = [
          //    path: 'movies/movies/moviesdetail/:id/:key',
          //    component: MoviedetailComponent,
          //  },
-         { path: '', component: MoviesComponent },
+         { path: '', redirectTo: '/movies', pathMatch: 'full' },
        ];
 
 @NgModule({
